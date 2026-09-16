@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
 import { DataTable } from "@/components/my-components/data-table";
 import { TaskColumn } from "@/components/my-components/task-components/TaskColumn";
+import { TaskCreateBtn } from "@/components/my-components/task-components/TaskCreateBtn";
 import { TaskDto } from "@/dto/Tasks.dto";
 
 export const TaskPage = () => {
@@ -11,9 +10,7 @@ export const TaskPage = () => {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-3xl font-semibold">Task</h1>
 
-        <Button size={"xl"} className={"bg-green-600"}>
-          <Plus /> Create Task
-        </Button>
+        <TaskCreateBtn />
       </div>
 
       {/* table */}

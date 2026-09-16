@@ -3,17 +3,10 @@ import type { Tasks } from "@/types/Tasks.types";
 import type { DataTableFeatures } from "../data-table-features";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "cn";
-import { MoreHorizontal, Pen, Trash2 } from "lucide-react";
 import { ArrowUpDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { TaskTableActionBtn } from "./TaskTableActionBtn";
 
 const columnHelper = createColumnHelper<DataTableFeatures, Tasks>();
 
@@ -90,28 +83,7 @@ export const TaskColumn = columnHelper.columns([
     id: "actions",
     header: "Actions",
     cell: () => {
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="ghost">
-              <MoreHorizontal />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuGroup>
-              <DropdownMenuItem className={"cursor-pointer"}>
-                <Pen /> Edit
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                variant="destructive"
-                className={"cursor-pointer"}
-              >
-                <Trash2 /> Delete
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
+      return <TaskTableActionBtn />;
     },
   }),
 ]);

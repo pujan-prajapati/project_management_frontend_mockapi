@@ -3,7 +3,6 @@ import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
@@ -12,53 +11,54 @@ import {
   SidebarMenuItem,
 } from "../ui/sidebar";
 import { Button } from "../ui/button";
-import { FolderKanban, LayoutDashboard, ListTodo, Plus } from "lucide-react";
+import { FolderKanban, LayoutDashboard, ListTodo } from "lucide-react";
+import { ProjectCreateBtn } from "./project-components/ProjectCreateBtn";
 
 export const AppSidebar = () => {
   return (
-    <Sidebar>
-      <SidebarHeader className="p-4">
-        <Link
-          to="/"
-          className="text-center text-3xl font-bold text-neutral-700"
-        >
-          Task<span className="text-green-500">Flow</span>
-        </Link>
-      </SidebarHeader>
+    <>
+      <Sidebar>
+        <SidebarHeader className="p-4">
+          <Link
+            to="/"
+            className="text-center text-3xl font-bold text-neutral-700"
+          >
+            Task<span className="text-green-500">Flow</span>
+          </Link>
+        </SidebarHeader>
 
-      <SidebarContent className="p-2">
-        <Link to="/">
-          <Button className="w-full h-14 text-xl mb-2">
-            <LayoutDashboard className="w-5! h-5!" /> Dashboard
-          </Button>
-        </Link>
+        <SidebarContent className="p-2">
+          <Link to="/">
+            <Button className="w-full h-14 text-xl mb-2">
+              <LayoutDashboard className="w-5! h-5!" /> Dashboard
+            </Button>
+          </Link>
 
-        <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarGroupAction className="cursor-pointer">
-            <Plus />
-          </SidebarGroupAction>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <FolderKanban /> Project 1
+          <SidebarGroup>
+            <SidebarGroupLabel>Projects</SidebarGroupLabel>
+            <ProjectCreateBtn />
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <FolderKanban /> Project 1
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <Link to="/task">
+                <SidebarMenuButton className="h-10">
+                  <ListTodo /> Tasks
                 </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <Link to="/task">
-              <SidebarMenuButton className="h-10">
-                <ListTodo /> Tasks
-              </SidebarMenuButton>
-            </Link>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarContent>
-    </Sidebar>
+              </Link>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarContent>
+      </Sidebar>
+    </>
   );
 };
