@@ -1,9 +1,17 @@
-export type Tasks = {
-  id: number;
+export type TaskFormData = {
   title: string;
-  project: string;
-  status: "todo" | "in-progress" | "completed";
+  description: string;
+  status: "todo" | "in_progress" | "done";
   priority: "low" | "medium" | "high";
-  dueDate: string;
+  projectId: string;
 };
 
+export type TaskResponse = {
+  id: string;
+  title: string;
+  description: string;
+  status: "todo" | "in_progress" | "done";
+  priority: "low" | "medium" | "high";
+  projectId: string;
+  createdAt: string;
+};

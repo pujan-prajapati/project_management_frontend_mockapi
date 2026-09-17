@@ -20,7 +20,7 @@ export const ProjectCreateBtn = () => {
         open={openDialog}
         onOpenChange={setOpenDialog}
       >
-        <ProjectForm />
+        <ProjectForm closeDialog={() => setOpenDialog(false)} />
       </CustomDialog>
     </>
   );

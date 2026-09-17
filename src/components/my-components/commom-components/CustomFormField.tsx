@@ -6,6 +6,18 @@ import {
 } from "react-hook-form";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+interface SelectOption {
+  label: string;
+  value: string;
+}
 
 interface FormFieldProps<T extends FieldValues> {
   name: FieldPath<T>;
@@ -13,9 +25,10 @@ interface FormFieldProps<T extends FieldValues> {
   placeholder?: string;
   label?: string;
   control: Control<T>;
-  type?: string;
+  type?: "text" | "email" | "password" | "number" | "select";
   disabled?: boolean;
   className?: string;
+  options?: SelectOption[];
 }
 
 export const CustomFormField = <T extends FieldValues>({
@@ -27,6 +40,7 @@ export const CustomFormField = <T extends FieldValues>({
   type = "text",
   disabled = false,
   className,
+  options = [],
 }: FormFieldProps<T>) => {
   return (
     <Controller
@@ -35,17 +49,41 @@ export const CustomFormField = <T extends FieldValues>({
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
           <FieldLabel htmlFor={name}>
-            {label} {required ? <span className="text-red-600">*</span> : null}
+            {label}
+            {required && <span className="text-red-600">*</span>}
           </FieldLabel>
-          <Input
-            {...field}
-            type={type}
-            disabled={disabled}
-            className={className}
-            placeholder={placeholder}
-            id={name}
-            aria-invalid={fieldState.invalid}
-          />
+
+          {type === "select" ? (
+            <Select
+              name={field.name}
+              value={field.value}
+              onValueChange={field.onChange}
+              disabled={disabled}
+            >
+              <SelectTrigger id={name} aria-invalid={fieldState.invalid}>
+                <SelectValue placeholder={placeholder ?? "Select"} />
+              </SelectTrigger>
+
+              <SelectContent>
+                {options.map((option) => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          ) : (
+            <Input
+              {...field}
+              type={type}
+              disabled={disabled}
+              className={className}
+              placeholder={placeholder}
+              id={name}
+              aria-invalid={fieldState.invalid}
+            />
+          )}
+
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}
