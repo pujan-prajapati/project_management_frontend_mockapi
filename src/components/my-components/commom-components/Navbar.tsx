@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger } from "../../ui/sidebar";
 
 export const Navbar = () => {
   return (

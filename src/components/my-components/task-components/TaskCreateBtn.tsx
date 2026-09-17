@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { CustomDialog } from "../CustomDialog";
+import { CustomDialog } from "../commom-components/CustomDialog";
 import { useState } from "react";
 
 export const TaskCreateBtn = () => {

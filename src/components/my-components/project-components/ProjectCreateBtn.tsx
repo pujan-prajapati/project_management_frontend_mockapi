@@ -1,7 +1,8 @@
 import { SidebarGroupAction } from "@/components/ui/sidebar";
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import { CustomDialog } from "../CustomDialog";
+import { CustomDialog } from "../commom-components/CustomDialog";
+import { ProjectForm } from "./ProjectForm";
 
 export const ProjectCreateBtn = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -15,11 +16,11 @@ export const ProjectCreateBtn = () => {
         <Plus />
       </SidebarGroupAction>
       <CustomDialog
-        title="Create Task"
+        title="Create Project"
         open={openDialog}
         onOpenChange={setOpenDialog}
       >
-        create project
+        <ProjectForm />
       </CustomDialog>
     </>
   );

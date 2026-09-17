@@ -9,12 +9,15 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "../ui/sidebar";
-import { Button } from "../ui/button";
+} from "../../ui/sidebar";
+import { Button } from "../../ui/button";
 import { FolderKanban, LayoutDashboard, ListTodo } from "lucide-react";
-import { ProjectCreateBtn } from "./project-components/ProjectCreateBtn";
+import { ProjectCreateBtn } from "../project-components/ProjectCreateBtn";
+import { useGetProjects } from "@/hooks/useProjects";
 
 export const AppSidebar = () => {
+  const { data } = useGetProjects();
+
   return (
     <>
       <Sidebar>
@@ -39,11 +42,18 @@ export const AppSidebar = () => {
             <ProjectCreateBtn />
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton>
-                    <FolderKanban /> Project 1
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                {data?.map((project) => (
+                  <SidebarMenuItem key={project.id}>
+                    <Link
+                      to="/projects/$projectId"
+                      params={{ projectId: project.id }}
+                    >
+                      <SidebarMenuButton>
+                        <FolderKanban /> {project.title}
+                      </SidebarMenuButton>
+                    </Link>
+                  </SidebarMenuItem>
+                ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
