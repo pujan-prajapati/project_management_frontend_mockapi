@@ -54,24 +54,34 @@ export const CustomFormField = <T extends FieldValues>({
           </FieldLabel>
 
           {type === "select" ? (
-            <Select
-              name={field.name}
-              value={field.value}
-              onValueChange={field.onChange}
-              disabled={disabled}
-            >
-              <SelectTrigger id={name} aria-invalid={fieldState.invalid}>
-                <SelectValue placeholder={placeholder ?? "Select"} />
-              </SelectTrigger>
+            (() => {
+              const selectedOption = options.find(
+                (option) => option.value === String(field.value),
+              );
 
-              <SelectContent>
-                {options.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              return (
+                <Select
+                  name={field.name}
+                  value={field.value}
+                  onValueChange={field.onChange}
+                  disabled={disabled}
+                >
+                  <SelectTrigger id={name} aria-invalid={fieldState.invalid}>
+                    <SelectValue placeholder={placeholder ?? "Select"}>
+                      {selectedOption?.label ?? placeholder ?? "Select"}
+                    </SelectValue>
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {options.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              );
+            })()
           ) : (
             <Input
               {...field}

@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { CustomFormField } from "../commom-components/CustomFormField";
 import { Button } from "@/components/ui/button";
-import { taskFormSchema } from "@/schema/TaskForm.schema";
 import { toast } from "react-toastify";
 import { useParams } from "@tanstack/react-router";
 import { useCreateTask, useEditTask } from "@/hooks/useTasks";
 import type { TaskResponse } from "@/types/Tasks.types";
+import { projectTaskFormSchema } from "@/schema/ProjectForm.schema";
 
 interface ProjectTaskFormProps {
   closeDialog: () => void;
@@ -22,8 +22,8 @@ export const ProjectTaskForm = ({
   const { projectId } = useParams({ from: "/(dashboard)/projects/$projectId" });
   const isEditMode = !!task;
 
-  const form = useForm<z.infer<typeof taskFormSchema>>({
-    resolver: zodResolver(taskFormSchema),
+  const form = useForm<z.infer<typeof projectTaskFormSchema>>({
+    resolver: zodResolver(projectTaskFormSchema),
     defaultValues: {
       title: task?.title ?? "",
       description: task?.description ?? "",
@@ -37,7 +37,7 @@ export const ProjectTaskForm = ({
   const { mutate: editMutate, isPending: editPending } = useEditTask(projectId);
   const isPending = isEditMode ? editPending : createPending;
 
-  const onSubmit = (data: z.infer<typeof taskFormSchema>) => {
+  const onSubmit = (data: z.infer<typeof projectTaskFormSchema>) => {
     if (isEditMode) {
       editMutate(
         { taskId: task.id, formData: { ...data, projectId } },

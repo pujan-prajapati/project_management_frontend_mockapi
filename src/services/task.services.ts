@@ -11,6 +11,16 @@ export const createTask = async (formData: TaskFormData) => {
   }
 };
 
+// get all tasks
+export const getAllTasks = async () => {
+  try {
+    const response = await httpGet<TaskResponse[]>("/task");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+  }
+};
+
 // get all project tasks
 export const getAllProjectTask = async (projectId: string) => {
   try {

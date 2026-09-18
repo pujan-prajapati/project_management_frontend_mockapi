@@ -32,6 +32,7 @@ interface ProjectTaskCardProps {
 export const ProjectTaskCard = ({ task }: ProjectTaskCardProps) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+
   const { mutate, isPending } = useDeleteTask();
 
   const onDeleteTask = async (taskId: string) => {

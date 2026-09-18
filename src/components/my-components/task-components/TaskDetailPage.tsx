@@ -1,9 +1,13 @@
 import { DataTable } from "@/components/my-components/commom-components/data-table";
-import { TaskColumn } from "@/components/my-components/task-components/TaskColumn";
 import { TaskCreateBtn } from "@/components/my-components/task-components/TaskCreateBtn";
-import { TaskDto } from "@/dto/Tasks.dto";
+import { createTaskColumns } from "@/components/my-components/task-components/TaskColumn";
+import { useGetProjects } from "@/hooks/useProjects";
+import { useGetAllTasks } from "@/hooks/useTasks";
 
 export const TaskPage = () => {
+  const { data: tasks } = useGetAllTasks();
+  const { data: projects } = useGetProjects();
+
   return (
     <section>
       {/* header */}
@@ -15,7 +19,16 @@ export const TaskPage = () => {
 
       {/* table */}
       <div className="space-y-4">
-        <DataTable columns={TaskColumn} data={TaskDto} />
+        {tasks?.length === 0 ? (
+          <div className="text-center text-gray-500">
+            No tasks found. Please create a task.
+          </div>
+        ) : (
+          <DataTable
+            columns={createTaskColumns(projects || [])}
+            data={tasks || []}
+          />
+        )}
       </div>
     </section>
   );
