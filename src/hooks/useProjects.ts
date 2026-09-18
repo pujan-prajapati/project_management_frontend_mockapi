@@ -4,7 +4,7 @@ import {
   editProject,
   getAllProjects,
   getProjectById,
-} from "@/services/project.services";
+} from "@/services/ProjectServices";
 import type { ProjectFormData } from "@/types/Project.types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 

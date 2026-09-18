@@ -4,7 +4,7 @@ import {
   editTask,
   getAllProjectTask,
   getAllTasks,
-} from "@/services/task.services";
+} from "@/services/TaskServices";
 import type { TaskFormData } from "@/types/Tasks.types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
