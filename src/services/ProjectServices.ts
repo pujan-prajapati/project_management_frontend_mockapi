@@ -1,5 +1,5 @@
 import { httpDelete, httpGet, httpPost, httpPut } from "@/axios";
-import type { ProjectFormData, ProjectResponse } from "@/types/Project.types";
+import type { ProjectFormData, ProjectResponse } from "@/types/ProjectTypes";
 
 // create project
 export const createProject = async (formData: ProjectFormData) => {

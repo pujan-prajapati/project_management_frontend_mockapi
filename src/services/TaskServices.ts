@@ -1,5 +1,5 @@
 import { httpDelete, httpGet, httpPost, httpPut } from "@/axios";
-import type { TaskFormData, TaskResponse } from "@/types/Tasks.types";
+import type { TaskFormData, TaskResponse } from "@/types/TasksTypes";
 
 // create task
 export const createTask = async (formData: TaskFormData) => {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CustomDialog } from "../commom-components/CustomDialog";
 import { ProjectForm } from "./ProjectForm";
 import { Button } from "@/components/ui/button";
-import type { ProjectResponse } from "@/types/Project.types";
+import type { ProjectResponse } from "@/types/ProjectTypes";
 
 interface ProjectEditBtnProps {
   project: ProjectResponse;

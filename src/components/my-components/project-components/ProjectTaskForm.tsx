@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useParams } from "@tanstack/react-router";
 import { useCreateTask, useEditTask } from "@/hooks/useTasks";
-import type { TaskResponse } from "@/types/Tasks.types";
+import type { TaskResponse } from "@/types/TasksTypes";
 import { projectTaskFormSchema } from "@/schema/ProjectFormSchema";
 
 interface ProjectTaskFormProps {

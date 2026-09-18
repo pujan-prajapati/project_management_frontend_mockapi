@@ -5,7 +5,7 @@ import {
   getAllProjects,
   getProjectById,
 } from "@/services/ProjectServices";
-import type { ProjectFormData } from "@/types/Project.types";
+import type { ProjectFormData } from "@/types/ProjectTypes";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useCreateProject = () => {

@@ -6,7 +6,7 @@ import { CustomFormField } from "../commom-components/CustomFormField";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { projectFormSchema } from "@/schema/ProjectFormSchema";
-import type { ProjectResponse } from "@/types/Project.types";
+import type { ProjectResponse } from "@/types/ProjectTypes";
 import {
   useCreateProject,
   useDeleteProject,

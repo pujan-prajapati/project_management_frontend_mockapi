@@ -10,7 +10,7 @@ import { MoreHorizontal, Pen, Trash2 } from "lucide-react";
 import { CustomDialog } from "../commom-components/CustomDialog";
 import { useState } from "react";
 import { TaskForm } from "./TaskForm";
-import type { TaskResponse } from "@/types/Tasks.types";
+import type { TaskResponse } from "@/types/TasksTypes";
 import { useDeleteTask } from "@/hooks/useTasks";
 import {
   AlertDialog,

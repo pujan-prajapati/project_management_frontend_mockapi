@@ -5,7 +5,7 @@ import * as z from "zod";
 import { CustomFormField } from "../commom-components/CustomFormField";
 import { Button } from "@/components/ui/button";
 import { taskFormSchema } from "@/schema/TaskFormSchema";
-import type { TaskResponse } from "@/types/Tasks.types";
+import type { TaskResponse } from "@/types/TasksTypes";
 import { useGetProjects } from "@/hooks/useProjects";
 import { useCreateTask, useEditTask } from "@/hooks/useTasks";
 import { toast } from "react-toastify";
