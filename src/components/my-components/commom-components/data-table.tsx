@@ -17,17 +17,20 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { features, type DataTableFeatures } from "./data-table-features";
 
 interface DataTableProps<TData extends RowData> {
   columns: ColumnDef<DataTableFeatures, TData>[];
   data: TData[];
+  toolbar?: (
+    table: ReturnType<typeof useTable<DataTableFeatures, TData>>,
+  ) => React.ReactNode;
 }
 
 export function DataTable<TData extends RowData>({
   columns,
   data,
+  toolbar,
 }: DataTableProps<TData>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -47,16 +50,10 @@ export function DataTable<TData extends RowData>({
 
   return (
     <div>
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter title..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm h-10"
-        />
-      </div>
+      {toolbar && (
+        <div className="flex items-center py-4">{toolbar(table)}</div>
+      )}
+
       <div className="overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
