@@ -5,7 +5,7 @@ import * as z from "zod";
 import { CustomFormField } from "../commom-components/CustomFormField";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
-import { projectFormSchema } from "@/schema/ProjectForm.schema";
+import { projectFormSchema } from "@/schema/ProjectFormSchema";
 import type { ProjectResponse } from "@/types/Project.types";
 import {
   useCreateProject,

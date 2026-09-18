@@ -54,13 +54,10 @@ export const createTaskColumns = (projects: ProjectResponse[] = []) =>
         return (
           <Badge
             className={cn(
-              "capitalize",
-              status === "todo" &&
-                "bg-gray-100 text-gray-700 hover:bg-gray-100",
-              status === "in-progress" &&
-                "bg-blue-100 text-blue-700 hover:bg-blue-100",
-              status === "completed" &&
-                "bg-green-100 text-green-700 hover:bg-green-100",
+              "capitalize font-semibold",
+              status === "todo" && "border-l-4 bg-orange-500",
+              status === "in_progress" && "border-l-4 bg-blue-500",
+              status === "done" && "border-l-4 bg-green-500",
             )}
           >
             {status.replace("-", " ")}

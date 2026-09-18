@@ -49,10 +49,8 @@ export const TaskTableActionBtn = ({ task }: TaskTableActionBtnProps) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button variant="ghost">
-            <MoreHorizontal />
-          </Button>
+        <DropdownMenuTrigger render={<Button variant={"ghost"} />}>
+          <MoreHorizontal />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuGroup>

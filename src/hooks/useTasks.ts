@@ -28,14 +28,6 @@ export const useGetAllTasks = () => {
   });
 };
 
-// use get all project tasks
-export const useGetAllProjectTasks = (projectId: string) => {
-  return useQuery({
-    queryKey: ["task", projectId],
-    queryFn: () => getAllProjectTask(projectId),
-  });
-};
-
 // use delete tasks
 export const useDeleteTask = () => {
   const queryClient = useQueryClient();
@@ -67,5 +59,13 @@ export const useEditTask = (projectId: string) => {
         queryKey: ["task", projectId],
       });
     },
+  });
+};
+
+// use get all project tasks
+export const useGetAllProjectTasks = (projectId: string) => {
+  return useQuery({
+    queryKey: ["task", projectId],
+    queryFn: () => getAllProjectTask(projectId),
   });
 };

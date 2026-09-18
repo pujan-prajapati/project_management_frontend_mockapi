@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useParams } from "@tanstack/react-router";
 import { useCreateTask, useEditTask } from "@/hooks/useTasks";
 import type { TaskResponse } from "@/types/Tasks.types";
-import { projectTaskFormSchema } from "@/schema/ProjectForm.schema";
+import { projectTaskFormSchema } from "@/schema/ProjectFormSchema";
 
 interface ProjectTaskFormProps {
   closeDialog: () => void;

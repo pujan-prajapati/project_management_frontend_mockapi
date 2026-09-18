@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { CustomDialog } from "../commom-components/CustomDialog";
 import { useState } from "react";
-import { TaskForm } from "./TaskForm";
+import { ProjectTaskForm } from "./ProjectTaskForm";
 
-export const TaskCreateBtn = () => {
+export const ProjectTaskCreateBtn = () => {
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ export const TaskCreateBtn = () => {
         open={openDialog}
         onOpenChange={setOpenDialog}
       >
-        <TaskForm closeDialog={() => setOpenDialog(false)} />
+        <ProjectTaskForm closeDialog={() => setOpenDialog(false)} />
       </CustomDialog>
     </div>
   );

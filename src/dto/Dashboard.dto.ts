@@ -3,7 +3,7 @@ import type {
   DashboardRecentActivityTypes,
   DashboardRecentTaskTypes,
 } from "@/types/Dashboard.types";
-import { Check, ClipboardClock, ClipboardList, Logs } from "lucide-react";
+import { Check, ClipboardList, Logs } from "lucide-react";
 
 export const DashboardDto: DashbaordTypes[] = [
   {
@@ -25,13 +25,6 @@ export const DashboardDto: DashbaordTypes[] = [
     title: "Completed",
     count: 18,
     Icon: Check,
-  },
-
-  {
-    id: 4,
-    title: "Overdue",
-    count: 3,
-    Icon: ClipboardClock,
   },
 ];
 

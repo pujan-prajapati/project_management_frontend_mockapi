@@ -1,9 +1,9 @@
 import { useParams } from "@tanstack/react-router";
 import { ProjectTaskCard } from "./ProjectTaskCard";
-import { TaskCreateBtn } from "../task-components/TaskCreateBtn";
 import { useGetProjectById } from "@/hooks/useProjects";
 import { ProjectEditBtn } from "./ProjectEditBtn";
 import { useGetAllProjectTasks } from "@/hooks/useTasks";
+import { ProjectTaskCreateBtn } from "./ProjectTaskCreateBtn";
 
 export const ProjectDetailPage = () => {
   const { projectId } = useParams({ from: "/(dashboard)/projects/$projectId" });
@@ -24,27 +24,30 @@ export const ProjectDetailPage = () => {
           <h1 className="capitalize font-semibold text-4xl">
             {project?.title}
           </h1>
-          <p>{project?.description}</p>
+          <p className="italic">{project?.description}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <TaskCreateBtn />
+          <ProjectTaskCreateBtn />
           {project && <ProjectEditBtn project={project} />}
         </div>
       </section>
 
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <div className="p-4 bg-gray-50 rounded-lg flex-1">
-          <h1 className="mb-4 font-semibold">Todo ({todoTasks?.length})</h1>
+        <div className="p-4 rounded-lg flex-1 shadow shadow-orange-200">
+          <h1 className="mb-4 font-semibold">
+            Todo ({todoTasks?.length || 0})
+          </h1>
           <div className="space-y-3">
             {todoTasks?.map((task) => (
               <ProjectTaskCard key={task.id} task={task} />
             ))}
           </div>
         </div>
-        <div className="p-4 bg-gray-50 rounded-lg flex-1">
+
+        <div className="p-4 rounded-lg flex-1 shadow shadow-blue-200">
           <h1 className="mb-4 font-semibold">
-            In Progress ({inProgressTasks?.length})
+            In Progress ({inProgressTasks?.length || 0})
           </h1>
 
           <div className="space-y-3">
@@ -53,8 +56,11 @@ export const ProjectDetailPage = () => {
             ))}
           </div>
         </div>
-        <div className="p-4 bg-gray-50 rounded-lg flex-1">
-          <h1 className="mb-4 font-semibold">Done ({doneTasks?.length})</h1>
+
+        <div className="p-4 rounded-lg flex-1 shadow shadow-green-200">
+          <h1 className="mb-4 font-semibold">
+            Done ({doneTasks?.length || 0})
+          </h1>
           <div className="space-y-3">
             {doneTasks?.map((task) => (
               <ProjectTaskCard key={task.id} task={task} />

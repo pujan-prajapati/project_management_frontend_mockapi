@@ -7,7 +7,6 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from "../../ui/sidebar";
 import { Button } from "../../ui/button";
@@ -30,7 +29,7 @@ export const AppSidebar = () => {
           </Link>
         </SidebarHeader>
 
-        <SidebarContent className="p-2">
+        <SidebarContent className="bg-white p-2">
           <Link to="/">
             <Button className="w-full h-14 text-xl mb-2">
               <LayoutDashboard className="w-5! h-5!" /> Dashboard
@@ -41,16 +40,15 @@ export const AppSidebar = () => {
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
             <ProjectCreateBtn />
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu className="space-y-1">
                 {data?.map((project) => (
                   <SidebarMenuItem key={project.id}>
                     <Link
                       to="/projects/$projectId"
                       params={{ projectId: project.id }}
+                      className="capitalize flex items-center gap-2 rounded-lg p-2 transition duration-200 font-semibold hover:bg-green-50 hover:text-green-900 [&.active]:bg-green-600 [&.active]:text-white"
                     >
-                      <SidebarMenuButton>
-                        <FolderKanban /> {project.title}
-                      </SidebarMenuButton>
+                      <FolderKanban size={18} /> {project.title}
                     </Link>
                   </SidebarMenuItem>
                 ))}
@@ -60,10 +58,11 @@ export const AppSidebar = () => {
 
           <SidebarMenu>
             <SidebarMenuItem>
-              <Link to="/task">
-                <SidebarMenuButton className="h-10">
-                  <ListTodo /> Tasks
-                </SidebarMenuButton>
+              <Link
+                to="/task"
+                className="capitalize flex items-center gap-2 rounded-lg p-2 transition duration-200 font-semibold hover:bg-green-50 hover:text-green-900 [&.active]:bg-green-600 [&.active]:text-white"
+              >
+                <ListTodo size={18} /> Tasks
               </Link>
             </SidebarMenuItem>
           </SidebarMenu>

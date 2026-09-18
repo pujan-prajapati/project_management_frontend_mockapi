@@ -24,6 +24,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { ProjectTaskForm } from "./ProjectTaskForm";
+import { cn } from "cn";
 
 interface ProjectTaskCardProps {
   task: TaskResponse;
@@ -49,9 +50,28 @@ export const ProjectTaskCard = ({ task }: ProjectTaskCardProps) => {
 
   return (
     <>
-      <Card className="rounded-lg">
+      <Card
+        className={cn(
+          "ring-0",
+          task.status === "todo" &&
+            "border-l-4 border-orange-500 shadow shadow-orange-200",
+          task.status === "in_progress" &&
+            "border-l-4 border-blue-500 shadow shadow-blue-200",
+          task.status === "done" &&
+            "border-l-4 border-green-500 shadow shadow-green-200",
+        )}
+      >
         <CardHeader className="flex items-center justify-between">
-          <h1 className="font-semibold text-lg">{task.title}</h1>
+          <h1
+            className={cn(
+              "font-semibold text-lg",
+              task.status === "todo" && "text-orange-800",
+              task.status === "in_progress" && "text-blue-800",
+              task.status === "done" && "text-green-800",
+            )}
+          >
+            {task.title}
+          </h1>
 
           <DropdownMenu>
             <DropdownMenuTrigger render={<Button variant={"ghost"} />}>
@@ -71,11 +91,20 @@ export const ProjectTaskCard = ({ task }: ProjectTaskCardProps) => {
           </DropdownMenu>
         </CardHeader>
 
-        <CardContent className="space-y-2">
+        <CardContent className="space-y-1">
           <p className="text-sm text-gray-500">{task.description}</p>
           <div className="flex items-center justify-between">
             <i className="text-gray-500">{task.createdAt}</i>
-            <Badge className="p-3">{task.priority}</Badge>
+            <Badge
+              className={cn(
+                "p-3",
+                task.priority === "low" && "bg-green-100 text-green-800",
+                task.priority === "medium" && "bg-yellow-100 text-yellow-800",
+                task.priority === "high" && "bg-red-100 text-red-800",
+              )}
+            >
+              {task.priority}
+            </Badge>
           </div>
         </CardContent>
       </Card>
