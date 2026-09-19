@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/my-components/commom-components/data-table";
+import { DataTable } from "@/components/my-components/common-components/data-table";
 import { TaskCreateBtn } from "@/components/my-components/task-components/TaskCreateBtn";
 import { createTaskColumns } from "@/components/my-components/task-components/TaskColumn";
 import { useGetProjects } from "@/hooks/useProjects";

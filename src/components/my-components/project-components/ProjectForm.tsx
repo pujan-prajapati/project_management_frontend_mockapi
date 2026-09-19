@@ -2,7 +2,7 @@ import { FieldGroup } from "@/components/ui/field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { CustomFormField } from "../commom-components/CustomFormField";
+import { CustomFormField } from "../common-components/CustomFormField";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { projectFormSchema } from "@/schema/ProjectFormSchema";

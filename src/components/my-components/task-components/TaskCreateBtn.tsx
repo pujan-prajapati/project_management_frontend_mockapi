@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { CustomDialog } from "../commom-components/CustomDialog";
+import { CustomDialog } from "../common-components/CustomDialog";
 import { useState } from "react";
 import { TaskForm } from "./TaskForm";
 

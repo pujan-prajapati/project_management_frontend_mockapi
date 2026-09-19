@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, Pen, Trash2 } from "lucide-react";
-import { CustomDialog } from "../commom-components/CustomDialog";
+import { CustomDialog } from "../common-components/CustomDialog";
 import { useState } from "react";
 import { TaskForm } from "./TaskForm";
 import type { TaskResponse } from "@/types/TasksTypes";

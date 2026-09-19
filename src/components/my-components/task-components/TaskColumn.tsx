@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table";
 import type { TaskResponse } from "@/types/TasksTypes";
 import type { ProjectResponse } from "@/types/ProjectTypes";
-import type { DataTableFeatures } from "../commom-components/data-table-features";
+import type { DataTableFeatures } from "../common-components/data-table-features";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "cn";
 import { ArrowUpDown } from "lucide-react";

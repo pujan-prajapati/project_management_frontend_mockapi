@@ -11,7 +11,7 @@ import { useDeleteTask } from "@/hooks/useTasks";
 import { MoreHorizontal, Pen, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { CustomDialog } from "../commom-components/CustomDialog";
+import { CustomDialog } from "../common-components/CustomDialog";
 import type { TaskResponse } from "@/types/TasksTypes";
 import {
   AlertDialog,

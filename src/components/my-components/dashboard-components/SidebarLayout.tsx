@@ -1,7 +1,7 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "../commom-components/AppSidebar";
+import { AppSidebar } from "../common-components/AppSidebar";
 import { Outlet } from "@tanstack/react-router";
-import { Navbar } from "../commom-components/Navbar";
+import { Navbar } from "../common-components/Navbar";
 
 export const SidebarLayout = () => {
   return (

@@ -5,7 +5,7 @@ import { registerFormSchema } from "@/schema/RegisterSchem";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { CustomFormField } from "../commom-components/CustomFormField";
+import { CustomFormField } from "../common-components/CustomFormField";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 

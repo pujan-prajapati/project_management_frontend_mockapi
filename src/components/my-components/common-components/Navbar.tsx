@@ -17,10 +17,10 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-5 bg-gray-50">
+    <div className="flex items-center justify-between p-5 bg-gray-50 ">
       <SidebarTrigger />
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger aria-label="open user menu">
           <Avatar size="lg" className={"cursor-pointer rounded-lg"}>
             <AvatarImage
               src="https://github.com/shadcn.png"
