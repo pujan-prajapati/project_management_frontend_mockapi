@@ -8,8 +8,16 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
 export const DashboardRecentTaskCard = () => {
-  const { data: tasks } = useGetAllTasks();
-  const { data: projects } = useGetProjects();
+  const {
+    data: tasks,
+    isPending: isTasksPending,
+    isError: isTasksError,
+  } = useGetAllTasks();
+  const {
+    data: projects,
+    isPending: isProjectsPending,
+    isError: isProjectsError,
+  } = useGetProjects();
 
   const latestTasks = [...(tasks ?? [])]
     .sort(
@@ -17,6 +25,14 @@ export const DashboardRecentTaskCard = () => {
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
     )
     .slice(0, 3);
+
+  if (isTasksPending || isProjectsPending) {
+    return <p>Loading...</p>;
+  }
+
+  if (isTasksError || isProjectsError) {
+    return <p>Error loading recent tasks</p>;
+  }
 
   return (
     <>

@@ -1,5 +1,7 @@
 import { AppSidebar } from "@/components/my-components/common-components/AppSidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { API_URL } from "@/tests/mocks/constants";
+import { projectErrorHandler } from "@/tests/mocks/errorHandler";
 import { server } from "@/tests/mocks/server";
 import { renderWithQueryClient } from "@/tests/utils/renderWithQueryClient";
 import { screen } from "@testing-library/react";
@@ -34,7 +36,7 @@ describe("AppSidebar", () => {
 
   it("should show no project when there are no proejcts", async () => {
     server.use(
-      http.get("https://6aab43c8ea0e22daa6dbefed.mockapi.io/project", () => {
+      http.get(`${API_URL}/project`, () => {
         return HttpResponse.json([]);
       }),
     );
@@ -45,15 +47,7 @@ describe("AppSidebar", () => {
   });
 
   it("should show error when projects API fails", async () => {
-    server.use(
-      http.get("https://6aab43c8ea0e22daa6dbefed.mockapi.io/project", () => {
-        console.log("ERROR HANDLER HIT");
-        return HttpResponse.json(
-          { message: "Internal Server Error" },
-          { status: 500 },
-        );
-      }),
-    );
+    server.use(projectErrorHandler);
 
     renderAppSidebar();
 

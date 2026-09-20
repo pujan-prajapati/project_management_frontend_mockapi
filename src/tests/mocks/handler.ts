@@ -1,7 +1,8 @@
 import { http, HttpResponse } from "msw";
+import { API_URL } from "./constants";
 
 export const handlers = [
-  http.get("https://6aab43c8ea0e22daa6dbefed.mockapi.io/project", () => {
+  http.get(`${API_URL}/project`, () => {
     return HttpResponse.json([
       {
         id: "1",
@@ -18,17 +19,31 @@ export const handlers = [
     ]);
   }),
 
-  http.get("https://6aab43c8ea0e22daa6dbefed.mockapi.io/task", () => {
+  http.get(`${API_URL}/task`, () => {
     return HttpResponse.json([
       {
         id: "1",
         title: "Task 1",
         status: "done",
+        createdAt: "2026-09-10",
       },
       {
         id: "2",
         title: "Task 2",
         status: "in-progress",
+        createdAt: "2026-09-20",
+      },
+      {
+        id: "3",
+        title: "Task 3",
+        status: "todo",
+        createdAt: "2026-09-15",
+      },
+      {
+        id: "4",
+        title: "Task 4",
+        status: "done",
+        createdAt: "2026-09-21",
       },
     ]);
   }),
