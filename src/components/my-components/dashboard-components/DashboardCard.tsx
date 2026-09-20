@@ -53,7 +53,10 @@ export const DashboardCard = () => {
                 </h2>
               </div>
 
-              <h1 className={`text-4xl font-bold text-${card.color}-800`}>
+              <h1
+                aria-label={`${card.title} count`}
+                className={`text-4xl font-bold text-${card.color}-800`}
+              >
                 {card.value}
               </h1>
             </CardContent>

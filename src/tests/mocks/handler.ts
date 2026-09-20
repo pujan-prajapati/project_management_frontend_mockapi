@@ -17,4 +17,19 @@ export const handlers = [
       },
     ]);
   }),
+
+  http.get("https://6aab43c8ea0e22daa6dbefed.mockapi.io/task", () => {
+    return HttpResponse.json([
+      {
+        id: "1",
+        title: "Task 1",
+        status: "done",
+      },
+      {
+        id: "2",
+        title: "Task 2",
+        status: "in-progress",
+      },
+    ]);
+  }),
 ];

@@ -18,6 +18,8 @@ export const DashboardPage = () => {
             Stay organized. Get things done efficiently.
           </p>
         </div>
+
+        {/* dashboard cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
           <DashboardCard />
         </div>
