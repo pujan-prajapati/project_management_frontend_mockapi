@@ -3,48 +3,29 @@ import type { ProjectFormData, ProjectResponse } from "@/types/ProjectTypes";
 
 // create project
 export const createProject = async (formData: ProjectFormData) => {
-  try {
-    const response = await httpPost<ProjectFormData, ProjectResponse>(
-      "/project",
-      formData,
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error creating project:", error);
-    throw error;
-  }
+  const response = await httpPost<ProjectFormData, ProjectResponse>(
+    "/project",
+    formData,
+  );
+  return response.data;
 };
 
 // get all projects
 export const getAllProjects = async () => {
-  try {
-    const response = await httpGet<ProjectResponse[]>("/project");
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-  }
+  const response = await httpGet<ProjectResponse[]>("/project");
+  return response.data;
 };
 
 // get project by id
 export const getProjectById = async (projectId: string) => {
-  try {
-    const response = await httpGet<ProjectResponse[]>(
-      `/project?id=${projectId}`,
-    );
-    return response.data[0];
-  } catch (error) {
-    console.error(`Error fetching project with id ${projectId}:`, error);
-  }
+  const response = await httpGet<ProjectResponse[]>(`/project?id=${projectId}`);
+  return response.data[0];
 };
 
 // delete project
 export const deleteProject = async (projectId: string) => {
-  try {
-    const response = await httpDelete(`/project/${projectId}`);
-    return response.data;
-  } catch (error) {
-    console.error(`Error deleting project with id ${projectId}:`, error);
-  }
+  const response = await httpDelete(`/project/${projectId}`);
+  return response.data;
 };
 
 // edit project
@@ -55,10 +36,6 @@ export const editProject = async ({
   projectId: string;
   formData: ProjectFormData;
 }) => {
-  try {
-    const response = await httpPut(`/project/${projectId}`, formData);
-    return response.data;
-  } catch (error) {
-    console.error(`Error editing project with id ${projectId}:`, error);
-  }
+  const response = await httpPut(`/project/${projectId}`, formData);
+  return response.data;
 };

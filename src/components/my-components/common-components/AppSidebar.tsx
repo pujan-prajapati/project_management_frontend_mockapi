@@ -15,7 +15,7 @@ import { ProjectCreateBtn } from "../project-components/ProjectCreateBtn";
 import { useGetProjects } from "@/hooks/useProjects";
 
 export const AppSidebar = () => {
-  const { data } = useGetProjects();
+  const { data, isPending, isError } = useGetProjects();
 
   return (
     <>
@@ -41,6 +41,17 @@ export const AppSidebar = () => {
             <ProjectCreateBtn />
             <SidebarGroupContent>
               <SidebarMenu className="space-y-1">
+                {isPending && (
+                  <p className="text-center text-gray-500">Loading...</p>
+                )}
+                {isError && (
+                  <p className="text-center text-red-500">
+                    Error loading projects
+                  </p>
+                )}
+                {data?.length === 0 && (
+                  <p className="text-center text-gray-500">No projects found</p>
+                )}
                 {data?.map((project) => (
                   <SidebarMenuItem key={project.id}>
                     <Link
@@ -60,9 +71,9 @@ export const AppSidebar = () => {
             <SidebarMenuItem>
               <Link
                 to="/task"
-                className="capitalize flex items-center gap-2 rounded-lg p-2 transition duration-200 font-semibold hover:bg-green-50 hover:text-green-900 [&.active]:bg-green-600 [&.active]:text-white"
+                className="text-sm text-gray-800 capitalize flex items-center gap-2 rounded-lg p-2 transition duration-200 font-semibold hover:bg-green-50 hover:text-green-900 [&.active]:bg-green-600 [&.active]:text-white"
               >
-                <ListTodo size={18} /> Tasks
+                <ListTodo size={16} /> Tasks
               </Link>
             </SidebarMenuItem>
           </SidebarMenu>

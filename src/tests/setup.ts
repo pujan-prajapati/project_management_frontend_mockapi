@@ -1,8 +1,18 @@
 import "@testing-library/jest-dom/vitest";
+import { server } from "./mocks/server";
+
+beforeAll(() => {
+  server.listen();
+});
 
 afterEach(() => {
   localStorage.clear();
   vi.clearAllMocks();
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  server.close();
 });
 
 Object.defineProperty(window, "matchMedia", {
