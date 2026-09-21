@@ -74,7 +74,10 @@ export const ProjectTaskCard = ({ task }: ProjectTaskCardProps) => {
           </h1>
 
           <DropdownMenu>
-            <DropdownMenuTrigger render={<Button variant={"ghost"} />}>
+            <DropdownMenuTrigger
+              aria-label="open project task actions"
+              render={<Button variant={"ghost"} />}
+            >
               <MoreHorizontal />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -110,7 +113,7 @@ export const ProjectTaskCard = ({ task }: ProjectTaskCardProps) => {
       </Card>
 
       <CustomDialog
-        title="Edit Project"
+        title="Edit Task"
         open={openDialog}
         onOpenChange={setOpenDialog}
       >
