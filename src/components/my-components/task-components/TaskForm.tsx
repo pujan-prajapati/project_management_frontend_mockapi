@@ -68,8 +68,8 @@ export const TaskForm = ({ closeDialog, task }: TaskFormProps) => {
 
   return (
     <form id="tasks-form" onSubmit={form.handleSubmit(onSubmit)}>
-      {/* title */}
       <FieldGroup>
+        {/* title */}
         <CustomFormField
           control={form.control}
           name="title"

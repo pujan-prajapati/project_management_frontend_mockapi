@@ -59,7 +59,7 @@ export const TaskPage = () => {
                       ?.setFilterValue(value === "all" ? undefined : value)
                   }
                 >
-                  <SelectTrigger className="w-40">
+                  <SelectTrigger className="w-40" aria-label="Filter by status">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
                   <SelectContent>
@@ -81,7 +81,10 @@ export const TaskPage = () => {
                       ?.setFilterValue(value === "all" ? undefined : value)
                   }
                 >
-                  <SelectTrigger className="w-40">
+                  <SelectTrigger
+                    className="w-40"
+                    aria-label="Filter by priority"
+                  >
                     <SelectValue placeholder="Priority" />
                   </SelectTrigger>
                   <SelectContent>

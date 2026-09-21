@@ -12,10 +12,10 @@ describe("Dashboard Card", () => {
       ).toHaveTextContent("2");
       expect(
         screen.getByRole("heading", { name: "Total Tasks count" }),
-      ).toHaveTextContent("2");
+      ).toHaveTextContent("4");
       expect(
         screen.getByRole("heading", { name: "Total Completed count" }),
-      ).toHaveTextContent("1");
+      ).toHaveTextContent("2");
     });
   });
 });

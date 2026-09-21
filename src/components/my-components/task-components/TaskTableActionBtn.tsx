@@ -49,7 +49,10 @@ export const TaskTableActionBtn = ({ task }: TaskTableActionBtnProps) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger render={<Button variant={"ghost"} />}>
+        <DropdownMenuTrigger
+          aria-label="Open task actions"
+          render={<Button variant={"ghost"} />}
+        >
           <MoreHorizontal />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
