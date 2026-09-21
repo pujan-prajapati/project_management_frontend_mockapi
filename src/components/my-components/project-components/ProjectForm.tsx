@@ -124,7 +124,10 @@ export const ProjectForm = ({ project, closeDialog }: ProjectFormProps) => {
       >
         {isEditMode && (
           <Popover>
-            <PopoverTrigger render={<Button variant="destructive" />}>
+            <PopoverTrigger
+              aria-label="Delete Project Popover"
+              render={<Button variant="destructive" />}
+            >
               <Trash2 />
             </PopoverTrigger>
             <PopoverContent>
@@ -140,6 +143,7 @@ export const ProjectForm = ({ project, closeDialog }: ProjectFormProps) => {
                   type="button"
                   disabled={isPending}
                   onClick={handleDelete}
+                  aria-label="Delete Project Button"
                 >
                   {isPending ? "Deleting..." : "Delete"}
                 </Button>

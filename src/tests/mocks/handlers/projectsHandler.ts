@@ -2,6 +2,7 @@ import { http, HttpResponse } from "msw";
 import { API_URL } from "../constants";
 
 export const projectsHandlers = [
+  // get all projects
   http.get(`${API_URL}/project`, () => {
     return HttpResponse.json([
       {
@@ -19,6 +20,7 @@ export const projectsHandlers = [
     ]);
   }),
 
+  // create project
   http.post(`${API_URL}/project`, async ({ request }) => {
     const project = (await request.json()) as {
       title: string;
@@ -35,6 +37,7 @@ export const projectsHandlers = [
     );
   }),
 
+  // update project
   http.put(`${API_URL}/project/:projectId`, async ({ params, request }) => {
     const project = (await request.json()) as {
       title: string;
@@ -48,36 +51,14 @@ export const projectsHandlers = [
     });
   }),
 
-  http.post(`${API_URL}/task`, () => {
+  // delete project
+  http.delete(`${API_URL}/project/:projectId`, ({ params }) => {
+    const projectId = params.projectId;
     return HttpResponse.json(
       {
-        id: "5",
-        title: "New Task",
-        description: "New task description",
-        priority: "high",
-        projectId: "1",
-        status: "in_progress",
-        createdAt: "2026-09-21",
+        message: `Project with ID ${projectId} deleted successfully.`,
       },
-      { status: 201 },
+      { status: 200 },
     );
-  }),
-
-  http.put(`${API_URL}/task/:taskId`, ({ params }) => {
-    return HttpResponse.json({
-      id: params.taskId,
-      title: "Updated Task",
-      description: "Updated Task Description",
-      priority: "high",
-      projectId: "1",
-      status: "in_progress",
-      createdAt: "2026-09-10",
-    });
-  }),
-
-  http.delete(`${API_URL}/task/:taskId`, ({ params }) => {
-    return HttpResponse.json({
-      message: `Task ${params.taskId} deleted successfully`,
-    });
   }),
 ];

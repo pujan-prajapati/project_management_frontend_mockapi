@@ -22,3 +22,42 @@ export const projectErrorHandler = http.get(`${API_URL}/project`, () => {
     },
   );
 });
+
+export const createProjectErrorHandler = http.post(`${API_URL}/project`, () => {
+  return HttpResponse.json(
+    {
+      message: "Internal Server Error",
+    },
+    {
+      status: 500,
+    },
+  );
+});
+
+export const updateProjectErrorHandler = http.put(
+  `${API_URL}/project/:projectId`,
+  () => {
+    return HttpResponse.json(
+      {
+        message: "Internal Server Error",
+      },
+      {
+        status: 500,
+      },
+    );
+  },
+);
+
+export const deleteProjectErrorHandler = http.delete(
+  `${API_URL}/project/:projectId`,
+  () => {
+    return HttpResponse.json(
+      {
+        message: "Internal Server Error",
+      },
+      {
+        status: 500,
+      },
+    );
+  },
+);

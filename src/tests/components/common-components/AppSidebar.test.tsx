@@ -22,11 +22,13 @@ const renderAppSidebar = () => {
 };
 
 describe("AppSidebar", () => {
+  // show loading state
   it("should show loading state in app sidebar", () => {
     renderAppSidebar();
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
+  // show projects when API succeeds
   it("should display projects when API succeeds", async () => {
     renderAppSidebar();
 
@@ -34,6 +36,7 @@ describe("AppSidebar", () => {
     expect(screen.getByText("Project 2")).toBeInTheDocument();
   });
 
+  // show no projects when there are no projects
   it("should show no project when there are no proejcts", async () => {
     server.use(
       http.get(`${API_URL}/project`, () => {
@@ -46,6 +49,7 @@ describe("AppSidebar", () => {
     expect(await screen.findByText("No projects found")).toBeInTheDocument();
   });
 
+  // show error when API fails
   it("should show error when projects API fails", async () => {
     server.use(projectErrorHandler);
 

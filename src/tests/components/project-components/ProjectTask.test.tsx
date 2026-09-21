@@ -60,7 +60,7 @@ describe("ProjectTaskCard and ProjectTaskForm", () => {
 
     await user.click(
       screen.getByRole("button", {
-        name: /^delete$/i,
+        name: /delete/i,
       }),
     );
 
